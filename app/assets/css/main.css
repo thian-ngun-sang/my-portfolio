@@ -17,6 +17,6 @@ button, span {
 
 @media(min-width: 1024px){
 	:root {
-		--app-padding-inline: 14rem;
+		--app-padding-inline: 18rem;
 	}
 }

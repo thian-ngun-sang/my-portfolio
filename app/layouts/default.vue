@@ -23,7 +23,8 @@
 
 			<div class="cta-section w-full text-end lg:text-center">
 				<button class="cta">
-					<a target="blank" href="https://wa.me/8119887227">Let's Talk</a>
+					<!-- <a target="blank" href="https://wa.me/8119887227">Let's Talk</a> -->
+					<a href="#contact-me" @click.prevent="scrollTo('contact-me')">Contact Me</a>
 				</button>
 			</div>
 
@@ -44,41 +45,38 @@
 				<h4 class="title">Tools & Technologies</h4>	
 
 				<div>
-					<ToolsTechnologyDisplay/>
-					<ToolsTechnologyDisplay/>
-					<ToolsTechnologyDisplay/>
-					<ToolsTechnologyDisplay/>
-					<ToolsTechnologyDisplay/>
-					<ToolsTechnologyDisplay/>
+					<ToolsTechnologyDisplay v-for="tool in toolsList" :tool="tool"/>
 				</div>
 			</section>
 
-			<form class="contact-me" id="contact-me" @submit.prevent="handleSubmit">
-				<h4 class="title">Contact Me</h4>	
+			<section>
+				<form class="contact-me" id="contact-me" @submit.prevent="handleSubmit">
+					<h4 class="title">Contact Me</h4>	
 
-				<div class="mb-2">
-					<label>Name</label>
-					<input placeholder="Your name" v-model="form.name" type="text" name="name"/>
-					<small v-if="submittedOnce && form.name === ''" class="text-red-600">Name field is required</small>
-				</div>
-				<div class="mb-2">
-					<label>Email</label>
-					<input placeholder="Your Email" v-model="form.email" type="email" name="email"/>
-					<small v-if="submittedOnce && form.email=== ''" class="text-red-600">Email field is required</small>
-				</div>
-				<div class="mb-2">
-					<label>Subject</label>
-					<input placeholder="Your Subject" v-model="form.subject" type="text" name="subject"/>
-				</div>
-				<div class="mb-2">
-					<label>Message</label>
-					<textarea placeholder="Your message" v-model="form.message" name="message"></textarea>
-					<small v-if="submittedOnce && form.message === ''" class="text-red-600">Message field is required</small>
-				</div>
-				<div class="text-end">
-					<button class="cta">Submit</button>
-				</div>
-			</form>
+					<div class="mb-2">
+						<label>Name</label>
+						<input placeholder="Your name" v-model="form.name" type="text" name="name"/>
+						<small v-if="submittedOnce && form.name === ''" class="text-red-600">Name field is required</small>
+					</div>
+					<div class="mb-2">
+						<label>Email</label>
+						<input placeholder="Your Email" v-model="form.email" type="email" name="email"/>
+						<small v-if="submittedOnce && form.email=== ''" class="text-red-600">Email field is required</small>
+					</div>
+					<div class="mb-2">
+						<label>Subject</label>
+						<input placeholder="Your Subject" v-model="form.subject" type="text" name="subject"/>
+					</div>
+					<div class="mb-2">
+						<label>Message</label>
+						<textarea placeholder="Your message" v-model="form.message" name="message"></textarea>
+						<small v-if="submittedOnce && form.message === ''" class="text-red-600">Message field is required</small>
+					</div>
+					<div class="text-end">
+						<button class="cta">Submit</button>
+					</div>
+				</form>
+			</section>
 
 			<div class="h-10"></div>
 
@@ -236,6 +234,27 @@
 
 	const { $db } = useNuxtApp();
 
+	const toolsList = [
+		{ path: "html5", name: "HTML" },
+		{ path: "css", name: "CSS" },
+		{ path: "javascript", name: "Javascript" },
+		{ path: "react", name: "React" },
+		{ path: "angular", name: "Angular" },
+		{ path: "vue", name: "Vue" },
+		{ path: "python", name: "Python" },
+		{ path: "django", name: "django" },
+		{ path: "php", name: "PHP" },
+		{ path: "laravel", name: "Laravel" },
+		{ path: "golang", name: "Golang" },
+		{ path: "gin", name: "Gin" },
+		{ path: "mysql", name: "MySQL" },
+		{ path: "mongodb", name: "MongoDB" },
+		{ path: "websocket", name: "WebSocket" },
+		{ path: "webrtc", name: "WebRTC" },
+		{ path: "docker", name: "Docker" },
+		{ path: "linux", name: "Linux" }
+	];
+
 	// const navBarOpen = useState('navBarOpen', () => false)
 	const navBarOpen = ref(false);
 	const form = ref({
@@ -259,6 +278,13 @@
 	function openNav() {
 		navBarOpen.value = true
 		if (process.client) { document.body.style.overflow = "hidden" }
+	}
+
+	function scrollTo(id) {
+		const el = document.getElementById(id)
+		if (el) {
+			el.scrollIntoView({ behavior: "smooth" })
+		}
 	}
 
 	const openToastMessage = () => toastMessageIsOn.value = true;

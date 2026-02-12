@@ -1,6 +1,8 @@
 <template>
 	<div class="my-work-item bg-white">
-		<img class="w-full" src="/programming-illustration.png"/>
+		<div>
+			<img class="w-full my-work-item-img" src="/programming-illustration.png"/>
+		</div>
 		<h5 class="sub-title">Winkchay - Dating App</h5>
 		<p class="mb-2">
 			A Web app with real-time chatting, matching users by location and interests.
@@ -26,8 +28,9 @@
 		border-radius: 0.25rem;
 	}
 
-	.my-work-item > img {
-		aspect-ratio: 4/3;
+	.my-work-item-img {
+		aspect-ratio: 4/1.6;
+		object-fit: contain;
 	}
 
 	.technology-ctn {

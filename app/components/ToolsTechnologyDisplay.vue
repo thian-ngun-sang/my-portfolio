@@ -1,7 +1,9 @@
 <template>
-	<div class="flex flex-col justify-center items-center bg-white aspect-[0.9]">
-		<img src="/html-logo.png" class="w-[5rem] lg:w-[8rem]"/>
-		<span class="tools-technology-name">HTML</span>
+	<div class="flex flex-col justify-end items-center bg-white aspect-[1] pb-3 box-content">
+		<div class="flex justify-center items-center flex-1">
+			<img :src="'/logos/' + tool.path + '.png'" class="w-[45%]"/>
+		</div>
+		<span class="tools-technology-name">{{ tool.name }}</span>
 	</div>
 </template>
 
@@ -17,3 +19,9 @@
 		}
 	}
 </style>
+
+<script setup>
+	const props = defineProps({
+		tool: Object
+	})
+</script>
