@@ -2,6 +2,7 @@
 	--outline-color: #CCCCCC;
 	--surface-color: #4E4E4E;
 	--link-color: #BC66CB;
+	--primary-color: #BC66CB;
 	--success-color: #44D21D;
 	--app-padding-inline: 0.75rem;
 }
@@ -10,7 +11,7 @@ body {
 	background-color: #D2D4DA;
 }
 
-button, span {
+button {
   display: inline-flex;
   align-items: center;   /* vertical centering */
 }

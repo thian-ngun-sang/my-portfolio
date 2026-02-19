@@ -13,5 +13,8 @@ export default defineNuxtConfig({
   },
 	plugins: [
     './plugins/firebase.client.ts'
-  ]
+  ],
+	icon: {
+		mode: 'remote'
+	}
 })

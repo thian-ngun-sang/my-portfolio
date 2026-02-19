@@ -1,12 +1,22 @@
 <template>
 	<div class="my-work-item bg-white">
+		<h5 class="sub-title">Winkchay - Dating App</h5>
 		<div>
 			<img class="w-full my-work-item-img" src="/programming-illustration.png"/>
 		</div>
-		<h5 class="sub-title">Winkchay - Dating App</h5>
+
+		<div class="flex justify-between items-center my-2">
+			<span class="app-type">Web App</span>
+			<div class="flex gap-2">
+				<a href="#contact-me" class="flex items-center"> <Icon name="grommet-icons:github" class="text-2xl app-link"/> </a>
+				<a href="#home" class="flex items-center"> <Icon name="grommet-icons:share-rounded" class="text-2xl"/> </a>
+			</div>
+		</div>
+
 		<p class="mb-2">
 			A Web app with real-time chatting, matching users by location and interests.
 		</p>
+
 		<div class="technology-ctn">
 			<span class="technology-item">ExpressJs</span>
 			<span class="technology-item">MongoDB</span>
@@ -33,10 +43,20 @@
 		object-fit: contain;
 	}
 
+	.app-type{
+		display: inline-flex;
+		align-items: center;   /* vertical centering */
+		justify-content: center;
+		border: 0.075rem solid var(--primary-color);
+		padding: 0.10rem 0.75rem;
+		color: var(--primary-color);
+		border-radius: 1.5rem;
+	}
+
 	.technology-ctn {
 		display: grid;
 		gap: 0.5rem;
-		grid-template-columns: repeat(auto-fit, minmax(6.5rem, 8rem));
+		grid-template-columns: repeat(auto-fit, minmax(6rem, 8rem));
 	}
 
 	.technology-item {
@@ -46,7 +66,7 @@
 		color: white;
 		border-radius: 1rem;
 		background-color: var(--surface-color);
-		padding: 0.125rem 0.25rem;
+		padding: 0.10rem 0.125rem;
 	}
 
 	@media(min-width: 1024px){
