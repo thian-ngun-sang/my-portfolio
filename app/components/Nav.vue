@@ -8,7 +8,7 @@
 					<a href="#home" @click.prevent="scrollTo('home')">Home</a>
 					<a href="#my-work" class="text-nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
 					<a href="#tools-technologies" class="text-nowrap" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
-					<a href="#follow-me" class="text-nowrap" @click.prevent="scrollTo('follow-me')">Follow Me</a>
+					<a href="#contact-me" class="text-nowrap" @click.prevent="scrollTo('contact-me')">Contact Me</a>
 				</nav>
 		</div>
 

@@ -1,12 +1,12 @@
 <template>
 	<div class="my-work-item bg-white">
-		<h5 class="sub-title">Winkchay - Dating App</h5>
+		<h5 class="sub-title">{{ project.name }}</h5>
 		<div>
 			<img class="w-full my-work-item-img" src="/programming-illustration.png"/>
 		</div>
 
 		<div class="flex justify-between items-center my-2">
-			<span class="app-type">Web App</span>
+			<span class="app-type">{{ project.type }}</span>
 			<div class="flex gap-2">
 				<a href="#contact-me" class="flex items-center"> <Icon name="grommet-icons:github" class="text-2xl app-link"/> </a>
 				<a href="#home" class="flex items-center"> <Icon name="grommet-icons:share-rounded" class="text-2xl"/> </a>
@@ -14,14 +14,11 @@
 		</div>
 
 		<p class="mb-2">
-			A Web app with real-time chatting, matching users by location and interests.
+			{{ project.description }}
 		</p>
 
 		<div class="technology-ctn">
-			<span class="technology-item">ExpressJs</span>
-			<span class="technology-item">MongoDB</span>
-			<span class="technology-item">WebSocket</span>
-			<span class="technology-item">ReactJs</span>
+			<span v-for="technology in project.technologyList" class="technology-item">{{ technology }}</span>
 		</div>
 	</div>
 </template>
@@ -81,3 +78,9 @@
 		}
 	}
 </style>
+
+<script setup>
+	const props = defineProps({
+		project: Object
+	})
+</script>

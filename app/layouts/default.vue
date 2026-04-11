@@ -35,9 +35,7 @@
 				<h4 class="title">My Work</h4>	
 
 				<div class="flex flex-col gap-3">
-					<MyWorkItem/>
-					<MyWorkItem/>
-					<MyWorkItem/>
+					<MyWorkItem v-for="project in projectList" :project="project"/>
 				</div>
 			</section>
 
@@ -49,8 +47,8 @@
 				</div>
 			</section>
 
-			<section>
-				<form class="contact-me" id="contact-me" @submit.prevent="handleSubmit">
+			<section id="contact-me">
+				<form class="contact-me" @submit.prevent="handleSubmit">
 					<h4 class="title">Contact Me</h4>	
 
 					<div class="mb-2">
@@ -255,6 +253,33 @@
 		{ path: "linux", name: "Linux" }
 	];
 
+	const projectList = [
+		{
+			name: "Winkchay - Dating App",
+			type: "Web App",
+			sourceCode: "",
+			liveView: "",
+			description: "A Web app with real-time chatting, matching users by location and interests.",
+			technologyList: ["ExpressJs", "MongoDB", "WebSocket", "ReactJs"]
+		},
+		{
+			name: "Jobsearch - Job searching app",
+			type: "Web App",
+			sourceCode: "",
+			liveView: "",
+			description: "A Web app for searching jobs with advanced search filters",
+			technologyList: ["PHP", "Laravel", "MySQL", "ReactJs", "Bootstrap"]
+		},
+		{
+			name: "Random Chat - Random video chat app",
+			type: "Web App",
+			sourceCode: "",
+			liveView: "",
+			description: "A Web app to connect people in your area",
+			technologyList: ["Golang", "Gin", "MySQL", "Gorm", "Redis", "Angular", "Tailwind"]
+		}
+	];
+
 	// const navBarOpen = useState('navBarOpen', () => false)
 	const navBarOpen = ref(false);
 	const form = ref({
@@ -267,6 +292,16 @@
 	const toastMessageIsOn = ref(false);
 	const lastSubmit = ref(0);
 	const submittedCount = ref(0);
+
+	if (import.meta.client) {
+		const lastSubmitStr = localStorage.getItem("lastSubmit");
+		if(lastSubmitStr){
+			const lastSubmitInt = Number.parseInt(lastSubmitStr);
+			if(!Number.isNaN(lastSubmitInt)){
+				lastSubmit.value = lastSubmitInt;
+			}
+		}
+	}
 
 	let toastTimeout = null;
 
@@ -294,6 +329,11 @@
 		const now = Date.now();
 		if (now - lastSubmit.value < 30_000) return false; // 30 sec
 		lastSubmit.value = now;
+
+		if (import.meta.client) {
+			localStorage.setItem("lastSubmit", now.toString());
+		}
+
 		return true;
 	}
 
@@ -303,7 +343,7 @@
 			return;
 		}
 
-		if ((submittedCount.value >= 3) && !canSubmit()) {
+		if ((submittedCount.value >= 2) && !canSubmit()) {
 			alert("Please wait before sending again")
 			return;
 		}
