@@ -48,8 +48,11 @@
 			</section>
 
 			<section id="contact-me">
-				<form class="contact-me" @submit.prevent="handleSubmit">
+        <form class="contact-me" @submit.prevent="handleSubmit">
+        <!-- <form class="contact-me" @submit.prevent="handleSubmitFormSpree"> -->
 					<h4 class="title">Contact Me</h4>	
+
+          <input type="text" name="_gotcha" tabindex="-1" class="honeypot">
 
 					<div class="mb-2">
 						<label>Name</label>
@@ -188,6 +191,12 @@
 		color: white;
 	}
 
+  .honeypot{
+    position: absolute;
+    left: -150vw;
+    top: -150vh;
+  }
+
 	@media(min-width: 1024px){
 		.intro-title {
 			font-size: 1.75rem;
@@ -228,9 +237,14 @@
 
 <script setup>
 	import { ref } from 'vue';
-	import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+  import { useFormspree } from '../composables/useFormspree';
+  import { useFirebaseForm } from '../composables/useFirebaseForm';
 
-	const { $db } = useNuxtApp();
+  const config = useRuntimeConfig()
+  const formspreeURL = config.public.formspreeURL;
+
+  const { submit, loading, success, error } = useFormspree();
+  // const { submit, loading, success, error } = useFirebaseForm();
 
 	const toolsList = [
 		{ path: "html5", name: "HTML" },
@@ -288,9 +302,11 @@
 		subject: "",
 		message: ""
 	});
+  const gotcha = ref("");
 	const submittedOnce = ref(false);
 	const toastMessageIsOn = ref(false);
 	const lastSubmit = ref(0);
+  const COOLDOWN = 10000 // 10 seconds
 	const submittedCount = ref(0);
 
 	if (import.meta.client) {
@@ -327,7 +343,7 @@
 
 	function canSubmit() {
 		const now = Date.now();
-		if (now - lastSubmit.value < 30_000) return false; // 30 sec
+		if (now - lastSubmit.value < COOLDOWN) return false; // 10 sec
 		lastSubmit.value = now;
 
 		if (import.meta.client) {
@@ -338,6 +354,7 @@
 	}
 
 	async function handleSubmit() {
+    submittedOnce.value = false;
 		if(form.value.name === "" || form.value.email === "" || form.value.message === ""){
 			submittedOnce.value = true;
 			return;
@@ -348,31 +365,30 @@
 			return;
 		}
 
-		try {
-			await addDoc(collection($db, "contacts"), {
-				...form.value,
-				createdAt: serverTimestamp()
-			})
+    const formEl = document.querySelector("form")
+    const formData = new FormData(formEl)
 
-			submittedOnce.value = false;
-			form.value.name = "";
-			form.value.email = "";
-			form.value.subject = "";
-			form.value.message = "";
+    await submit(formData);
 
-			openToastMessage();
+    if(!loading.value && success.value){
+      form.value.name = "";
+      form.value.email = "";
+      form.value.subject = "";
+      form.value.message = "";
 
-			toastTimeout && clearTimeout(toastTimeout)
-			toastTimeout = setTimeout(() => {
-				closeToastMessage()
-				toastTimeout = null;
-			}, 3000)
+      openToastMessage();
 
-			submittedCount.value = submittedCount.value + 1;
-		} catch (err) {
-			console.error(err)
-			closeToastMessage();
-		}
+      toastTimeout && clearTimeout(toastTimeout)
+      toastTimeout = setTimeout(() => {
+        closeToastMessage()
+        toastTimeout = null;
+      }, 3000)
+    }else if(!loading.value && error.value){
+      console.error(error.value);
+      closeToastMessage();
+    }
+
+    submittedCount.value = submittedCount.value + 1;
 	}
 
 	onBeforeUnmount(() => {
