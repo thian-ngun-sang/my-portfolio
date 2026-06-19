@@ -158,6 +158,11 @@
 		margin-top: 1.5rem;
 	}
 
+  html {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
 	section {
 		scroll-margin-top: 3.25rem;
 	}

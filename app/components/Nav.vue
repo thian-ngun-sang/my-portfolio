@@ -5,10 +5,10 @@
 		</div>
 		<div v-if="!navBarOpen" class="w-full hidden lg:block">
 				<nav class="w-full flex justify-end bg-white gap-8">
-					<a href="#home" @click.prevent="scrollTo('home')">Home</a>
-					<a href="#my-work" class="text-nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
-					<a href="#tools-technologies" class="text-nowrap" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
-					<a href="#contact-me" class="text-nowrap" @click.prevent="scrollTo('contact-me')">Contact Me</a>
+          <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
+					<a href="#my-work" class="text-nowrap">My Work</a>
+					<a href="#tools-technologies" class="text-nowrap">Tools &amp; Technologies</a>
+					<a href="#contact-me" class="text-nowrap">Contact Me</a>
 				</nav>
 		</div>
 
@@ -17,7 +17,7 @@
 				<Icon name="mdi:close" class="nuxt-icon bg-dark cursor-pointer" @click="$emit('closeNav')"/>
 			</div>
 			<nav class="flex flex-col items-end">
-				<a href="#home" class="text-nowrap" @click.prevent="scrollTo('home')">Home</a>
+        <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
 				<a href="#my-work" class="nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
 				<a href="#tools-technologies" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
 				<a href="#contact-me" @click.prevent="scrollTo('contact-me')">Contact Me</a>
@@ -80,6 +80,9 @@
 		emit('closeNav');
 		const el = document.getElementById(id)
 		if (el) {
+      if(id !== "home"){
+        window.location.hash = id
+      }
 			el.scrollIntoView({ behavior: "smooth" })
 		}
 	}
