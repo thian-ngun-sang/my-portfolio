@@ -1,5 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Thian Ngun Sang | Portfolio',
+      meta: [
+        { name: 'description', content: 'My app description' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' }
+      ]
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/icon', '@nuxtjs/tailwindcss'],
@@ -17,5 +28,10 @@ export default defineNuxtConfig({
   ],
 	icon: {
 		mode: 'remote'
-	}
+	},
+  vite: {
+    server: {
+      allowedHosts: true  // allows any host
+    }
+  }
 })

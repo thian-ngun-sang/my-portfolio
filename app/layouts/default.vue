@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<Nav @openNav="openNav" @closeNav="closeNav" :navBarOpen="navBarOpen"/>
-		<div class="bg-white pt-[3.25rem] lg:pt-[3.25rem]" id="home">
+		<div class="bg-white pt-[3.5rem] lg:pt-[3.25rem]" id="home">
 
 			<div class="lg:flex lg:flex-row-reverse items-center">
 				<div class="bg-white">
@@ -112,6 +112,10 @@
 		padding-inline: var(--app-padding-inline);
 	}
 
+  input {
+      height: 2.25rem;
+  }
+
 	.intro-title {
 		font-size: 1.20rem;
 		font-family: "Yeseva One";
@@ -138,8 +142,8 @@
 	.cta {
 		color: white;
 		background-color: black;
-		padding: 0.2rem 1rem;
-		border-radius: 0.3rem;
+		padding: 0.4rem 1.25rem;
+		border-radius: 0.5rem;
 	}
 
 	.cta-section {
@@ -274,29 +278,55 @@
 
 	const projectList = [
 		{
-			name: "Winkchay - Dating App",
-			type: "Web App",
+      id: "pan-asian",
+			name: "Pan Asian - A local restaurant landing page",
+      imageList: ["home-page.jpg"],
+			type: "Web Site",
 			sourceCode: "",
-			liveView: "",
-			description: "A Web app with real-time chatting, matching users by location and interests.",
-			technologyList: ["ExpressJs", "MongoDB", "WebSocket", "ReactJs"]
+			liveView: "https://pan-asian.web.app",
+			description: "A website to list your restaurant menu items in a decent way.",
+			technologyList: ["Next.js", "Tailwind CSS"]
 		},
+		// {
+    //   id: "winkchay",
+		// 	name: "Winkchay - Dating App",
+    //   imageList: ["home-page.jpg"],
+		// 	type: "Web App",
+		// 	sourceCode: "",
+		// 	liveView: "",
+		// 	description: "A Web app with real-time chatting, matching users by location and interests.",
+		// 	technologyList: ["ExpressJs", "MongoDB", "WebSocket", "ReactJs"]
+		// },
 		{
+      id: "jobsearch",
 			name: "Jobsearch - Job searching app",
+      imageList: ["home-page.jpg"],
 			type: "Web App",
-			sourceCode: "",
+			sourceCode: "https://github.com/thian-ngun-sang/jobsearch",
 			liveView: "",
 			description: "A Web app for searching jobs with advanced search filters",
 			technologyList: ["PHP", "Laravel", "MySQL", "ReactJs", "Bootstrap"]
 		},
 		{
-			name: "Random Chat - Random video chat app",
+      id: "guestguide",
+			name: "Guestguide - guiding app for tourists",
+      imageList: ["home-page.jpg"],
 			type: "Web App",
-			sourceCode: "",
+			sourceCode: "https://github.com/thian-ngun-sang/guestguide_new_version",
 			liveView: "",
-			description: "A Web app to connect people in your area",
-			technologyList: ["Golang", "Gin", "MySQL", "Gorm", "Redis", "Angular", "Tailwind"]
+			description: "A tourguide app to find help like accommodation, transportation, courses",
+			technologyList: ["ExpressJs", "MongoDB", "VueJS"]
 		}
+		// {
+    //   id: "randomchat",
+		// 	name: "Random Chat - Random video chat app",
+    //   imageList: ["home-page.jpg"],
+		// 	type: "Web App",
+		// 	sourceCode: "",
+		// 	liveView: "",
+		// 	description: "A Web app to connect people in your area",
+		// 	technologyList: ["Golang", "Gin", "MySQL", "Gorm", "Redis", "Angular", "Tailwind"]
+		// }
 	];
 
 	// const navBarOpen = useState('navBarOpen', () => false)
@@ -328,12 +358,12 @@
 
 	function closeNav() {
 		navBarOpen.value = false
-		if (process.client) { document.body.style.overflow = "scroll" }
+		if (process.client) { document.body.style.overflowY = "auto" }
 	}
 
 	function openNav() {
 		navBarOpen.value = true
-		if (process.client) { document.body.style.overflow = "hidden" }
+		if (process.client) { document.body.style.overflowY = "hidden" }
 	}
 
 	function scrollTo(id) {

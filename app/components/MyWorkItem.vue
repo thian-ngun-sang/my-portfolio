@@ -1,15 +1,19 @@
 <template>
 	<div class="my-work-item bg-white">
 		<h5 class="sub-title">{{ project.name }}</h5>
-		<div>
-			<img class="w-full my-work-item-img" src="/programming-illustration.png"/>
+		<div class="mt-2">
+			<img class="w-full my-work-item-img" :src="'/my-works/' + project.id + '/' + project.imageList[0]"/>
 		</div>
 
 		<div class="flex justify-between items-center my-2">
 			<span class="app-type">{{ project.type }}</span>
 			<div class="flex gap-2">
-				<a href="#contact-me" class="flex items-center"> <Icon name="grommet-icons:github" class="text-2xl app-link"/> </a>
-				<a href="#home" class="flex items-center"> <Icon name="grommet-icons:share-rounded" class="text-2xl"/> </a>
+				<a v-if="project.sourceCode !== ''" :href="project.sourceCode" target="_blank" class="flex items-center">
+          <Icon name="grommet-icons:github" class="text-2xl app-link"/>
+        </a>
+				<a v-if="project.liveView !== ''" :href="project.liveView" target="_blank" class="flex items-center">
+          <Icon name="grommet-icons:share-rounded" class="text-2xl"/>
+        </a>
 			</div>
 		</div>
 

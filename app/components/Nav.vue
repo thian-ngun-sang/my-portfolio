@@ -16,7 +16,7 @@
 			<div class="w-full flex justify-end">
 				<Icon name="mdi:close" class="nuxt-icon bg-dark cursor-pointer" @click="$emit('closeNav')"/>
 			</div>
-			<nav class="flex flex-col items-end">
+			<nav class="mt-4 flex flex-col items-end gap-4 text-lg">
         <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
 				<a href="#my-work" class="nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
 				<a href="#tools-technologies" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
@@ -37,7 +37,7 @@
 	}
 
 	.nuxt-icon{
-		font-size: 1.75rem;
+		font-size: 2rem;
 	}
 
 	.nav-bar{
