@@ -16,7 +16,140 @@ button {
   align-items: center;   /* vertical centering */
 }
 
+.app > * {
+  padding-inline: var(--app-padding-inline);
+}
+
+input {
+    height: 2.25rem;
+}
+
+.intro-title {
+  font-size: 1.20rem;
+  font-family: "Yeseva One";
+  font-weight: bold;
+}
+
+.title {
+  font-family: "Abhaya Libre";
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
+.intro {
+  font-family: "Xanh Mono";
+  line-height: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.intro p {
+  margin-block: 0.5rem;
+}
+
+.cta {
+  color: white;
+  background-color: black;
+  padding: 0.4rem 1.25rem;
+  border-radius: 0.5rem;
+}
+
+.cta-section {
+  padding-bottom: 7rem;
+}
+
+.intersection {
+  margin-top: -5rem;
+}
+
+.my-work h4, .tools-technologies > h4 {
+  margin-bottom: 0.5rem;
+}
+
+.tools-technologies, .contact-me, .follow-me{
+  margin-top: 1.5rem;
+}
+
+html {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 3.25rem;
+}
+
+.tools-technologies > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.contact-me label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.contact-me input, .contact-me textarea{
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.toast-message{
+  bottom: 2rem;
+  position: fixed;
+  left: var(--app-padding-inline);
+  right: var(--app-padding-inline);
+  background-color: var(--success-color);
+  /* padding-inline: var(--app-padding-inline); */
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+.honeypot{
+  position: absolute;
+  left: -150vw;
+  top: -150vh;
+}
+
 @media(min-width: 1024px){
+  .intro-title {
+    font-size: 1.75rem;
+  }
+  .intro {
+    font-size: 1.5rem;
+  }
+  .intro p {
+    margin-block: 1rem;
+  }
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .contact-me {
+    width: 60%;
+  }
+  .contact-me label {
+    font-size: 1.25rem;
+  }
+  .contact-me input, .contact-me textarea{
+    font-size: 1.25rem;
+  }
+
+  .cta {
+    font-size: 1.25rem;
+  }
+
+  .tools-technologies > div {
+    gap: 1rem;
+  }
+
+  .follow-me {
+    justify-content: flex-end;
+  }
+
 	:root {
 		--app-padding-inline: 18rem;
 	}

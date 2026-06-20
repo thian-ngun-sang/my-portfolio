@@ -1,0 +1,20 @@
+export const toolsList = [
+  { path: "html5", name: "HTML" },
+  { path: "css", name: "CSS" },
+  { path: "javascript", name: "Javascript" },
+  { path: "react", name: "React" },
+  { path: "angular", name: "Angular" },
+  { path: "vue", name: "Vue" },
+  { path: "python", name: "Python" },
+  { path: "django", name: "django" },
+  { path: "php", name: "PHP" },
+  { path: "laravel", name: "Laravel" },
+  { path: "golang", name: "Golang" },
+  { path: "gin", name: "Gin" },
+  { path: "mysql", name: "MySQL" },
+  { path: "mongodb", name: "MongoDB" },
+  { path: "websocket", name: "WebSocket" },
+  { path: "webrtc", name: "WebRTC" },
+  { path: "docker", name: "Docker" },
+  { path: "linux", name: "Linux" }
+];
