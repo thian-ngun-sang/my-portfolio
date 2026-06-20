@@ -48,7 +48,7 @@
 			</section>
 
 			<section id="contact-me">
-        <form class="contact-me" @submit.prevent="handleSubmit">
+        <form class="contact-me" @submit.prevent="handleSubmit" ref="formRef">
         <!-- <form class="contact-me" @submit.prevent="handleSubmitFormSpree"> -->
 					<h4 class="title">Contact Me</h4>	
 
@@ -329,6 +329,8 @@
 		// }
 	];
 
+  const formRef = ref(null);
+
 	// const navBarOpen = useState('navBarOpen', () => false)
 	const navBarOpen = ref(false);
 	const form = ref({
@@ -400,8 +402,8 @@
 			return;
 		}
 
-    const formEl = document.querySelector("form")
-    const formData = new FormData(formEl)
+    if (!formRef.value) return
+    const formData = new FormData(formRef.value)
 
     await submit(formData);
 

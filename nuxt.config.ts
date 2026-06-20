@@ -19,7 +19,6 @@ export default defineNuxtConfig({
 	],
 	runtimeConfig: {
     public: {
-      firebaseConfig: process.env.NUXT_PUBLIC_FIREBASE_CONFIG,
       formspreeURL: process.env.NUXT_PUBLIC_FORMSPREE_URL
     }
   },
