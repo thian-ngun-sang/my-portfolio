@@ -14,7 +14,7 @@
 					</h3>
 					<article class="intro">
 						<p> I am a full-stack developer. </p>
-						<p>I build web applications which are just not beautiful, but user-friendly and responsive to different layouts.</p>
+						<p>I build web applications which are not just beautiful, but user-friendly and responsive to different layouts.</p>
 						<p>I specialize in design, frontend, backend, and server deployment.</p>
 						<p>Speed, security, and user experience are my top priorities.</p>
 					</article>
