@@ -1,27 +1,27 @@
 <template>
 	<div class="nav-bar">
-		<div v-if="!navBarOpen" class="w-full flex justify-end bg-white app lg:hidden">
-			<Icon name="mdi:menu" class="bg-dark nuxt-icon cursor-pointer" @click="$emit('openNav')"/>
-		</div>
-		<div v-if="!navBarOpen" class="w-full hidden lg:block">
-				<nav class="w-full flex justify-end bg-white gap-8">
-          <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
-					<a href="#my-work" class="text-nowrap">My Work</a>
-					<a href="#tools-technologies" class="text-nowrap">Tools &amp; Technologies</a>
-					<a href="#contact-me" class="text-nowrap">Contact Me</a>
-				</nav>
-		</div>
 
-		<div v-if="navBarOpen" class="mobile-nav absolute top-0 right-0 left-0 h-[100vh] bg-white app">
-			<div class="w-full flex justify-end">
-				<Icon name="mdi:close" class="nuxt-icon bg-dark cursor-pointer" @click="$emit('closeNav')"/>
-			</div>
-			<nav class="mt-4 flex flex-col items-end gap-4 text-lg">
+    <div :class="navBarOpen?'h-[100vh] bg-white lg:hidden':''">
+      <div class="w-full flex justify-end bg-white lg:hidden">
+        <Icon name="mdi:menu" :class="!navBarOpen?'bg-dark nuxt-icon cursor-pointer':'hidden'" @click="$emit('openNav')"/>
+        <Icon name="mdi:close" :class="navBarOpen?'bg-dark nuxt-icon cursor-pointer':'hidden'" @click="$emit('closeNav')"/>
+      </div>
+
+      <nav :class="navBarOpen?'flex flex-col items-end gap-4 text-lg':'hidden'">
         <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
-				<a href="#my-work" class="nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
-				<a href="#tools-technologies" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
-				<a href="#contact-me" @click.prevent="scrollTo('contact-me')">Contact Me</a>
-			</nav>
+        <a href="#my-work" class="nowrap" @click.prevent="scrollTo('my-work')">My Work</a>
+        <a href="#tools-technologies" @click.prevent="scrollTo('tools-technologies')">Tools &amp; Technologies</a>
+        <a href="#contact-me" @click.prevent="scrollTo('contact-me')">Contact Me</a>
+      </nav>
+    </div>
+
+		<div class="w-full hidden lg:block">
+      <nav class="w-full flex justify-end bg-white gap-8">
+        <NuxtLink to="/" @click="scrollTo('home')">Home</NuxtLink>
+        <a href="#my-work" class="text-nowrap">My Work</a>
+        <a href="#tools-technologies" class="text-nowrap">Tools &amp; Technologies</a>
+        <a href="#contact-me" class="text-nowrap">Contact Me</a>
+      </nav>
 		</div>
 
 	</div>

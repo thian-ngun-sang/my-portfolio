@@ -2,7 +2,7 @@
 	--outline-color: #CCCCCC;
 	--surface-color: #4E4E4E;
 	--link-color: #BC66CB;
-	--primary-color: #BC66CB;
+	--primary-color: #00B4E0;
 	--success-color: #44D21D;
 	--app-padding-inline: 0.75rem;
 }
@@ -151,6 +151,6 @@ section {
   }
 
 	:root {
-		--app-padding-inline: 18rem;
+		--app-padding-inline: 14rem;
 	}
 }

@@ -1,9 +1,13 @@
 <template>
 	<div class="my-work-item bg-white">
 		<h5 class="sub-title">{{ project.name }}</h5>
-		<div class="mt-2">
-			<img class="w-full my-work-item-img" :src="'/my-works/' + project.id + '/' + project.imageList[0]"/>
-		</div>
+
+    <div class="my-2 rounded-md border border-1 border-[var(--outline-color)] overflow-hidden">
+      <a :href="project.liveView" target="_blank" :class="project.liveView ? '' : 'pointer-events-none'"
+        :tabindex="project.liveView ?'0':'-1'">
+        <img class="w-full my-work-item-img rounded-sm" :src="'/my-works/' + project.id + '/' + project.imageList[0]"/>
+      </a>
+    </div>
 
 		<div class="flex justify-between items-center my-2">
 			<span class="app-type">{{ project.type }}</span>
@@ -40,8 +44,8 @@
 	}
 
 	.my-work-item-img {
-		aspect-ratio: 4/1.6;
-		object-fit: contain;
+		/* aspect-ratio: 4/1.6;
+		object-fit: contain; */
 	}
 
 	.app-type{
