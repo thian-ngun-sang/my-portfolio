@@ -7,6 +7,24 @@
 	--app-padding-inline: 0.75rem;
 }
 
+@font-face {
+  font-family: 'YesevaOne';
+  src: url('/fonts/YesevaOne-Regular.ttf') format('truetype');
+  font-display: swap; /* Keeps text visible while loading */
+}
+
+@font-face {
+  font-family: 'AbhayaLibre';
+  src: url('/fonts/AbhayaLibre-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'XanhMono';
+  src: url('/fonts/XanhMono-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
 body {
 	background-color: #D2D4DA;
 }
@@ -26,19 +44,19 @@ input {
 
 .intro-title {
   font-size: 1.20rem;
-  font-family: "Yeseva One";
-  font-weight: bold;
+  font-family: "YesevaOne", serif;
+  font-weight: semibold;
 }
 
-.title {
-  font-family: "Abhaya Libre";
+.title, .sub-title {
+  font-family: "AbhayaLibre";
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 
 .intro {
-  font-family: "Xanh Mono";
+  font-family: "XanhMono";
   line-height: 1.5rem;
   font-size: 1.25rem;
 }
